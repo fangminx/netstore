@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.taobao.netstore.category.bean.Category" table="category">
+		<id name="cid">
+			<generator class="native"/>
+		</id>
+		<property name="cname"/>
+		
+		<!-- 二级分类集合 -->
+		<set order-by="ccid" name="categoryseconds" lazy="false" cascade="delete">
+			<key column="cid"/>
+			<one-to-many class="cn.taobao.netstore.categorysecond.bean.Categorysecond"/>
+		</set>
+	</class>
+</hibernate-mapping>
